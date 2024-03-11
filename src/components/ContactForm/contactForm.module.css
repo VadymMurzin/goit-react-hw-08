@@ -1,0 +1,35 @@
+.container {
+    border: 1px solid black;
+    width: 400px;
+    height: 100%;
+    display: grid;
+
+    padding-left: 10px;
+    padding-top: 10px;
+    margin-bottom: 20px;
+}
+.name {
+    display: flex;
+    /* justify-content: space-around; */
+    margin-bottom: 10px;
+    justify-items: start;
+    flex-direction: column;
+}
+
+.number {
+    display: flex;
+    flex-direction: column;
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+.field {
+    width: 350px;
+}
+
+.button {
+    width: 150px;
+    border: 1px solid black;
+    margin-left: 100px;
+    margin-bottom: 10px;
+}
