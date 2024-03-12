@@ -1,7 +1,7 @@
-import ContactList from '../../componentes/ContactList/ContactList';
-import ContactForm from '../../componentes/ContactForm/ContactForm';
-import SearchBar from '../../componentes/SearchBar/SearchBar';
-import { fetchContacts } from '../../redux/operations';
+import ContactList from '../../components/ContactList/ContactList';
+import ContactForm from '../../components/ContactForm/ContactForm';
+import SearchBar from '../../components/SearchBar/SearchBar';
+import { fetchContacts } from '../../redux/operators';
 import { selectIsLoading } from '../../redux/selectors';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

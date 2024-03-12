@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { logIn } from '../../redux/auth/operations';
+import { logIn } from '../../redux/auth/operators';
 import css from './loginForm.module.css';
 
 export const LoginForm = () => {
