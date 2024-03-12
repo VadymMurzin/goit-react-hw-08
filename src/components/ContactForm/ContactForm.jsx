@@ -4,6 +4,9 @@ import * as yup from 'yup';
 import css from './contactForm.module.css';
 import { useDispatch } from 'react-redux';
 import { addContact } from '../../redux/operators';
+import toast from 'react-hot-toast';
+import Button from '@mui/material/Button';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 const validationFormSchema = yup.object().shape({
   name: yup.string().min(3, 'Too short!').max(50, 'Too long!').required('Requiered'),
@@ -15,7 +18,7 @@ export default function ContactForm() {
   const numberId = useId();
   const dispatch = useDispatch();
   return (
-    <div>
+    <div className={css.container}>
       <Formik
         validationSchema={validationFormSchema}
         initialValues={{
@@ -25,27 +28,39 @@ export default function ContactForm() {
         onSubmit={(values, actions) => {
           const contacts = {
             name: values.name,
-            phone: values.number,
+            number: values.number,
           };
-          dispatch(addContact(contacts));
+          dispatch(addContact(contacts))
+            .unwrap()
+            .then(() => toast('Succseful'))
+            .catch(() => toast('Not succseful'));
           actions.resetForm();
         }}
       >
-        <Form className={css.form}>
-          <div className={css.container}>
-            <div className={css.labelContainer}>
-              <label htmlFor={nameId}>Name</label>
+        <Form>
+          <div>
+            <div className={css.inputBox}>
+              <label className={css.text} htmlFor={nameId}>
+                Name
+              </label>
               <Field className={css.input} type="text" id={nameId} name="name" />
               <ErrorMessage name="name" component="span" />
             </div>
-            <div className={css.labelContainer}>
-              <label htmlFor={numberId}>Number</label>
+            <div className={css.inputBox}>
+              <label className={css.text} htmlFor={numberId}>
+                Number
+              </label>
               <Field className={css.input} type="text" id={numberId} name="number" />
               <ErrorMessage name="number" component="span" />
             </div>
-            <button className={css.button} type="submit">
+            <Button
+              className={css.button}
+              type="submit"
+              variant="contained"
+              startIcon={<CloudUploadIcon />}
+            >
               Add Contact
-            </button>
+            </Button>
           </div>
         </Form>
       </Formik>

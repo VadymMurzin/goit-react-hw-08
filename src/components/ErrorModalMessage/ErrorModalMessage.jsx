@@ -1,12 +1,12 @@
 import Modal from 'react-modal';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/operations';
+import { deleteContact } from '../../redux/operators';
 import toast from 'react-hot-toast';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import css from './errorModalMessage.module.css';
 
-export function WarningModalMessage({ closetModal, value, btn }) {
+export function ErrorModalMessage({ closetModal, value, btn }) {
   const dispatch = useDispatch();
   const handleDelete = () =>
     dispatch(deleteContact(btn))
@@ -33,11 +33,9 @@ export function WarningModalMessage({ closetModal, value, btn }) {
           >
             Delete
           </Button>
-          {/* <button onClick={handleDelete}>Delete</button> */}
           <Button onClick={closetModal} type="button" variant="outlined">
             close
           </Button>
-          {/* <button onClick={closetModal}>close</button> */}
         </form>
       </Modal>
     </div>

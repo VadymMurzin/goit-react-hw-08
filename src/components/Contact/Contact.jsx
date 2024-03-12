@@ -1,22 +1,30 @@
-import { useDispatch } from 'react-redux';
 import css from './contact.module.css';
-import { deleteContactAndUpdateList } from '../../redux/operators';
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+import Avatar from '@mui/material/Avatar';
 
-export default function Contact({ contacts }) {
-  const dispatch = useDispatch();
-  const handleDelete = () => dispatch(deleteContactAndUpdateList(contacts.id));
-  console.log(contacts);
+export default function Contact({ contacts, isOpen }) {
   return (
-    <div>
-      <h2 className={css.text}>
-        {contacts.name}
-      </h2>
-      <p className={css.text}>
-        {contacts.phone}
-      </p>
-      <button onClick={handleDelete} className={css.button} type="button">
+    <div className={css.container}>
+      <Avatar src="/broken-image.jpg" />
+      <div className={css.blockContact}>
+        <h2 className={css.text}>
+          <span>Name:</span> {contacts.name}
+        </h2>
+        <p className={css.text}>
+          <span>Phone:</span> {contacts.number}
+        </p>
+      </div>
+
+      <Button
+        onClick={() => isOpen(contacts.id)}
+        className={css.button}
+        type="button"
+        variant="outlined"
+        startIcon={<DeleteIcon />}
+      >
         Delete
-      </button>
+      </Button>
     </div>
   );
 }
